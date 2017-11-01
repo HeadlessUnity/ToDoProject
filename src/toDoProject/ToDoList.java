@@ -16,7 +16,6 @@ public class ToDoList {
 	public void addTask(Task task) {
 
 		list.add(task);
-
 	}
 // TODO fix this mother...
 //	public void deleteTask(String title) {
@@ -68,7 +67,11 @@ public class ToDoList {
 
 
 
+<<<<<<< HEAD
 	public String findTask(String title){
+=======
+	public void findTask(String title){
+>>>>>>> branch 'master' of https://github.com/Shobre/toDoProject.git
 
 		title =title.trim();
 
@@ -78,8 +81,14 @@ public class ToDoList {
 				return title;
 			}
 			else {
+<<<<<<< HEAD
 				
 				return "Task not Found";
+=======
+				System.out.println("Task not Found");
+
+
+>>>>>>> branch 'master' of https://github.com/Shobre/toDoProject.git
 			}
 		}
 		return null;
