@@ -11,13 +11,13 @@ public class Inputter {
 	private boolean running = true;
 	
 	public void startToDo() {
+		ToDoList todo = new ToDoList();
+		System.out.println(" +-------------------------------------+");
+		System.out.println(" | Type \"help\" to see the command list |");
+		System.out.println(" |     Type \"exit\" to exit program     |");
+		System.out.println(" +-------------------------------------+\n");
 		while (running) {
-			ToDoList todo = new ToDoList();
-			System.out.println("      What would you like \"To Do\"?");
-			System.out.println(" +-------------------------------------+");
-			System.out.println(" | Type \"help\" to see the command list |");
-			System.out.println(" |     Type \"exit\" to exit program     |");
-			System.out.println(" +-------------------------------------+\n");
+			System.out.println("\tWhat would you like \"To Do\"?");
 			Scanner sc = new Scanner(System.in);
 			String input = sc.nextLine().toLowerCase();
 			
@@ -48,7 +48,7 @@ public class Inputter {
 				case "help":
 					System.out.println("  -- This is the help section -- ");
 					System.out.println(" +------------------------------+");
-					System.out.println(" |\tCommand\tFunction\t\t|");
+					System.out.println(" |\tCommand|Function\t\t|");
 					System.out.println(" +------------------------------+");
 					System.out.println(" |\tadd\tAdd a new Task\t|");
 					System.out.println(" |\tremove\tRemove task\t|");
