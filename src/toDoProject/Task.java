@@ -12,7 +12,10 @@ public class Task {
 	private String description;
 	
 
+
 	public Task(String title, String description, int numberOfDays) {
+		super();
+		this.endDate = endDate;
 		this.title = title;
 		this.description = description;
 		this.numberOfDays = numberOfDays;
