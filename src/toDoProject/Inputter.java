@@ -7,7 +7,7 @@ public class Inputter {
 	
 	private String toDoTitle;
 	private String toDoDescription;
-	private long endDate;
+	private int endDate;
 	private boolean running = true;
 	
 	public void startToDo() {
@@ -28,16 +28,13 @@ public class Inputter {
 					System.out.println("Write a short description");
 					toDoDescription = sc.nextLine();
 					System.out.println("How many days should this take?");
-					endDate = sc.nextLong();
+					endDate = sc.nextInt();
 					Task task = new Task(toDoTitle, toDoDescription, endDate);
 					todo.addTask(task);
-					sc.close();
 					System.out.println("To Do added!");
 					break;
 				case "remove":
 					System.out.println("Choose task to remove");
-					toDoTitle = sc.nextLine();
-					//todo.findTask(toDoTitle);
 					System.out.println("Removing task");
 					break;
 				case "list":
@@ -45,8 +42,9 @@ public class Inputter {
 					
 					break;
 				case "find":
-					System.out.println("Looking for a specific task");
-					
+					System.out.println("Type the title of Task");
+					toDoTitle = sc.nextLine();
+					todo.findTask(toDoTitle);
 					break;
 				case "edit":
 					System.out.println("Editing the task");

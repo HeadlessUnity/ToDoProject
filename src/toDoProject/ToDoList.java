@@ -12,7 +12,6 @@ public class ToDoList {
 	public void addTask(Task task) {
 
 		list.add(task);
-		task.setStartDate(LocalDate.now()); 
 
 	}
 
@@ -24,17 +23,17 @@ public class ToDoList {
 
 	}
 
-	public Task findTask(String title) throws TaskNotFoundException{
+	public void findTask(String title){
 
 		title =title.trim();
 
 		for (Task task : list) {
 			if (task.getTitle().equals(title)) {
-				return task;
+				System.out.println(task.toString());
 			}
 			
 		}
-		throw new TaskNotFoundException();
+		
 
 	}
 

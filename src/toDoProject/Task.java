@@ -12,12 +12,12 @@ public class Task {
 	
 
 
-	public Task(String title, String description, long numberOfDays) {
-		super();
+	public Task(String title, String description, int numberOfDays) {
 		this.title = title;
 		this.description = description;
-		startDate = startDate.now();
+		startDate = LocalDate.now();
 		endDate = startDate.plusDays(numberOfDays);
+		status = Status.ACTIVE;
 	}
 
 
