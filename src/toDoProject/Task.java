@@ -26,11 +26,6 @@ public class Task {
 	}
 
 
-	public void setStartDate(LocalDate startDate) {
-		this.startDate = startDate;
-	}
-
-
 	public LocalDate getEndDate() {
 		return endDate;
 	}
@@ -108,8 +103,11 @@ public class Task {
 
 	@Override
 	public String toString() {
-		return "Task [startDate=" + startDate + ", endDate=" + endDate + ", status=" + status + ", title=" + title
-				+ ", description=" + description + "]";
+		return "Title:\t" + title + "\n" +
+				"Start:\t" + startDate + "\n" +
+				"End:\t" + endDate + "\n" +
+				"Status:\t" + status + "\n" +
+				"Description: " + description + "\n";
 	}
 	
 	
