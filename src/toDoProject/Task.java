@@ -14,9 +14,10 @@ public class Task {
 
 	public Task(String title, String description, long numberOfDays) {
 		super();
-		this.endDate = startDate.plusDays(numberOfDays);
 		this.title = title;
 		this.description = description;
+		startDate = startDate.now();
+		endDate = startDate.plusDays(numberOfDays);
 	}
 
 

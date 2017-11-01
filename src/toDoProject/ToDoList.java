@@ -30,7 +30,7 @@ public class ToDoList {
 
 		for (Task task : list) {
 			if (task.getTitle().equals(title)) {
-return task;
+				return task;
 			}
 			
 		}

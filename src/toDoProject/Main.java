@@ -7,7 +7,6 @@ public class Main {
 		System.out.println("prutt");
 		
 		Inputter input = new Inputter();
-		
 		input.startToDo();
 
 	}

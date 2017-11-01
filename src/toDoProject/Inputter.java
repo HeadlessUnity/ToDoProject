@@ -31,19 +31,26 @@ public class Inputter {
 					endDate = sc.nextLong();
 					Task task = new Task(toDoTitle, toDoDescription, endDate);
 					todo.addTask(task);
+					sc.close();
 					System.out.println("To Do added!");
 					break;
 				case "remove":
+					System.out.println("Choose task to remove");
+					toDoTitle = sc.nextLine();
+					//todo.findTask(toDoTitle);
 					System.out.println("Removing task");
 					break;
 				case "list":
 					System.out.println("Listing all tasks");
+					
 					break;
 				case "find":
 					System.out.println("Looking for a specific task");
+					
 					break;
 				case "edit":
 					System.out.println("Editing the task");
+					
 					break;
 				case "help":
 					System.out.println("  -- This is the help section -- ");
@@ -60,6 +67,7 @@ public class Inputter {
 					break;
 				case "exit":
 					System.out.println("Exiting program");
+					sc.close();
 					running = false;
 					break;
 		
