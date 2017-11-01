@@ -2,11 +2,13 @@ package toDoProject;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 
 
 public class ToDoList {
-
+	Scanner sc = new Scanner(System.in);
+	String input; 
 
 	private ArrayList<Task> list = new ArrayList<Task>();
 
@@ -16,21 +18,46 @@ public class ToDoList {
 		list.add(task);
 
 	}
-
-	public void deleteTask(Task task) {
-		list.remove(task);
-
-	}
-
+// TODO fix this mother...
+//	public void deleteTask(String title) {
+//		findTask(name)
+//
+//	}
+//TODO
 	public void editTask(String name) {
-		try {
-			findTask(name);
-			System.out.println(name.toString());
 
-		} 
-		catch (Exception e) {
-			// TODO: handle exception
+		findTask(name);
+		System.out.println("Found taskname: " + name.toString());
+		System.out.println("What do you want to change? (name,description,endDate");
+		input = sc.nextLine().toLowerCase();
+		switch (input) {
+		case "name":
+			
+			input = sc.nextLine().toLowerCase();
+			
+
+			break;
+
+		case "despription":
+			
+			input = sc.nextLine().toLowerCase();
+
+			break;
+			
+		case "endDate":
+			
+			input = sc.nextLine().toLowerCase();
+
+			break;
+
+		default:
+			break;
 		}
+		input = sc.nextLine().toLowerCase();
+
+
+
+
 	}
 	public void printAll() {
 		for(Task l : list)
@@ -41,23 +68,21 @@ public class ToDoList {
 
 
 
-	public void findTask(String title){
-
+	public String findTask(String title){
 
 		title =title.trim();
 
 		for (Task task : list) {
 			if (task.getTitle().equals(title)) {
 				System.out.println(task.toString());
+				return title;
 			}
 			else {
-				System.out.println("Task not Found");
-
+				
+				return "Task not Found";
 			}
-
 		}
-
-
+		return null;
 
 	}
 
