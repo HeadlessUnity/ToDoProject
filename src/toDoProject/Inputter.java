@@ -37,7 +37,9 @@ public class Inputter {
 					System.out.println("Listing all tasks");
 					break;
 				case "find":
+					toDoTitle = sc.nextLine();
 					System.out.println("Looking for a specific task");
+					todo.findTask(toDoTitle);					
 					break;
 				case "edit":
 					System.out.println("Editing the task");
