@@ -7,14 +7,17 @@ public class Inputter {
 	
 	private String toDoTitle;
 	private String toDoDescription;
-	private int endDate;
+	private long endDate;
 	private boolean running = true;
 	
 	public void startToDo() {
 		while (running) {
 			ToDoList todo = new ToDoList();
-			System.out.println("What would you like \"To Do\"?");
-			System.out.println("--Type \"help\" if you wish to see the command list--");
+			System.out.println("      What would you like \"To Do\"?");
+			System.out.println(" +-------------------------------------+");
+			System.out.println(" | Type \"help\" to see the command list |");
+			System.out.println(" |     Type \"exit\" to exit program     |");
+			System.out.println(" +-------------------------------------+\n");
 			Scanner sc = new Scanner(System.in);
 			String input = sc.nextLine().toLowerCase();
 			
@@ -25,7 +28,7 @@ public class Inputter {
 					System.out.println("Write a short description");
 					toDoDescription = sc.nextLine();
 					System.out.println("How many days should this take?");
-					endDate = sc.nextInt();
+					endDate = sc.nextLong();
 					Task task = new Task(toDoTitle, toDoDescription, endDate);
 					todo.addTask(task);
 					System.out.println("To Do added!");
@@ -43,7 +46,17 @@ public class Inputter {
 					System.out.println("Editing the task");
 					break;
 				case "help":
-					System.out.println("This is the help section");
+					System.out.println("  -- This is the help section -- ");
+					System.out.println(" +------------------------------+");
+					System.out.println(" |\tCommand\tFunction\t\t|");
+					System.out.println(" +------------------------------+");
+					System.out.println(" |\tadd\tAdd a new Task\t|");
+					System.out.println(" |\tremove\tRemove task\t|");
+					System.out.println(" |\tlist\tList all tasks\t|");
+					System.out.println(" |\tfind\tFind tasks\t|");
+					System.out.println(" |\tedit\tEdit a task\t|");
+					System.out.println(" |\texit\tExit program\t|");
+					System.out.println(" +------------------------------+\n");
 					break;
 				case "exit":
 					System.out.println("Exiting program");

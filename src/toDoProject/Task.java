@@ -6,19 +6,17 @@ import java.time.LocalDate;
 public class Task {
 	private LocalDate startDate;
 	private LocalDate endDate;
-	private int numberOfDays;
 	private Status status;
 	private String title;
 	private String description;
 	
 
 
-	public Task(String title, String description, int numberOfDays) {
+	public Task(String title, String description, long numberOfDays) {
 		super();
-		this.endDate = endDate;
+		this.endDate = startDate.plusDays(numberOfDays);
 		this.title = title;
 		this.description = description;
-		this.numberOfDays = numberOfDays;
 	}
 
 
