@@ -11,8 +11,9 @@ public class Task {
 	private String description;
 	
 
-	public Task(Status status, String title, String description) {
-		this.status = status;
+	public Task(String title, String description, LocalDate endDate) {
+		super();
+		this.endDate = endDate;
 		this.title = title;
 		this.description = description;
 	}
