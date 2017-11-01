@@ -12,7 +12,6 @@ public class ToDoList {
 	public void addTask(Task task) {
 
 		list.add(task);
-
 	}
 
 	public void deleteTask(Task task) {
@@ -25,14 +24,11 @@ public class ToDoList {
 
 	public void findTask(String title){
 
-		title =title.trim();
-
 		for (Task task : list) {
 			if (task.getTitle().equals(title)) {
-				System.out.println(task.toString());
-			}
-			
-		}
+				System.out.println(task.toString().trim());
+			}	
+	}
 		
 
 	}
