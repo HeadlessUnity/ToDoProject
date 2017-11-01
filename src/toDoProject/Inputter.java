@@ -46,6 +46,7 @@ public class Inputter {
 					System.out.println("Type the title of Task");
 					toDoTitle = sc.nextLine();
 					todo.findTask(toDoTitle);
+
 					break;
 				case "edit":
 					System.out.println("Editing the task");
