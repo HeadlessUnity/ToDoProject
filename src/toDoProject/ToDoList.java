@@ -14,7 +14,6 @@ public class ToDoList {
 	public void addTask(Task task) {
 
 		list.add(task);
-		task.setStartDate(LocalDate.now()); 
 
 	}
 
@@ -39,7 +38,11 @@ public class ToDoList {
 	}
 
 
-	public void findTask(String title) {
+
+
+
+	public void findTask(String title){
+
 
 		title =title.trim();
 
@@ -53,6 +56,7 @@ public class ToDoList {
 			}
 
 		}
+
 
 
 	}
