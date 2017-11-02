@@ -14,16 +14,30 @@ public class ToDoList {
 
 
 	public void addTask(Task task) {
-
 		list.add(task);
 	}
 	
-// TODO fix this mother...
-//	public void removeTask(String title) {
-//		findTask(name)
-//
-//	}
-//TODO
+
+
+
+	public void removeExpDates() {
+		for (Task task : list) {
+			if (task.getStatus() == Status.EXPIRED){
+				System.out.println("NOTICE: Found expired task: " + task.getTitle() +".\nRemoving...");
+				removeTask(task.getTitle());
+				
+			}
+		}
+	}
+
+	public void removeTask(String title) {
+		list.remove(findTask(title));
+		
+		
+
+	}
+
+
 	public void editTask() {
 		System.out.println("Enter task to edit ");
 		String searchString = sc.nextLine().toLowerCase();
@@ -73,8 +87,9 @@ public class ToDoList {
 		
 		for (Task task : list) {
 			
-			if (task.getTitle().equals(title)) {
-				//System.out.println(task.toString());
+
+			if (task.getTitle().equalsIgnoreCase(title)) {
+
 				return task;
 			}
 
