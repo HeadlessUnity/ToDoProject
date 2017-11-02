@@ -18,7 +18,7 @@ public class ToDoList {
 	}
 	
 // TODO fix this mother...
-//	public void deleteTask(String title) {
+//	public void removeTask(String title) {
 //		findTask(name)
 //
 //	}
@@ -36,7 +36,7 @@ public class ToDoList {
 			
 			break;
 
-		case "despription":
+		case "description":
 			
 			input = sc.nextLine().toLowerCase();
 
@@ -67,25 +67,16 @@ public class ToDoList {
 
 	public String findTask(String title){
 
-
-
 		title =title.trim();
-
+		
 		for (Task task : list) {
+			
 			if (task.getTitle().equals(title)) {
-				System.out.println(task.toString());
-				return title;
+				//System.out.println(task.toString());
+				return task.toString();
 			}
 
-			else {
 			
-				return "Task not Found";
-
-			
-
-
-
-			}
 		}
 		return null;
 	}

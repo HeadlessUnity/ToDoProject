@@ -69,7 +69,7 @@ public class Inputter {
 					// Here we call the scanner to ask for a title to find.
 					System.out.println("Type the title of Task");
 					toDoTitle = sc.nextLine();
-					todo.findTask(toDoTitle);
+					System.out.println(todo.findTask(toDoTitle));
 					System.out.println("Is this the task you were looking for?\n");
 				break;
 					
