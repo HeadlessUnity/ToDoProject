@@ -1,6 +1,5 @@
 package toDoProject;
 
-import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -17,6 +16,7 @@ public class ToDoList {
 
 		list.add(task);
 	}
+	
 // TODO fix this mother...
 //	public void deleteTask(String title) {
 //		findTask(name)
@@ -34,7 +34,6 @@ public class ToDoList {
 			
 			input = sc.nextLine().toLowerCase();
 			
-
 			break;
 
 		case "despription":
@@ -55,8 +54,6 @@ public class ToDoList {
 		input = sc.nextLine().toLowerCase();
 
 
-
-
 	}
 	public void printAll() {
 		for(Task l : list)
@@ -67,7 +64,9 @@ public class ToDoList {
 
 
 
+
 	public String findTask(String title){
+
 
 
 		title =title.trim();
@@ -77,6 +76,7 @@ public class ToDoList {
 				System.out.println(task.toString());
 				return title;
 			}
+
 			else {
 			
 				return "Task not Found";
@@ -84,10 +84,10 @@ public class ToDoList {
 			
 
 
+
 			}
 		}
 		return null;
-
 	}
 
 }
