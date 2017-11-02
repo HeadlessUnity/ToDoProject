@@ -22,7 +22,7 @@ public class ToDoList {
 		for (Task task : list) {
 			if (task.getStatus() == Status.EXPIRED){
 				System.out.println("NOTICE: Found expired task: " + task.getTitle() +".\nRemoving...");
-				
+				removeTask(task.getTitle());
 				
 			}
 		}
