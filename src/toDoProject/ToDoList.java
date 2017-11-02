@@ -16,14 +16,21 @@ public class ToDoList {
 		list.add(task);
 	}
 	
-
+	public void checkExpDates() {
+		for (Task task : list) {
+			if (task.getEndDate().isAfter(task.getStartDate())){
+				System.out.println("USER_NOTICE: Found expired task: " + task.getTitle() +"\nChanging task: " + task.getTitle() + " to EXPIRED.");
+				task.setStatus(Status.EXPIRED);
+				
+			}
+		}
+	}
 
 	public void removeExpDates() {
 		for (Task task : list) {
 			if (task.getStatus() == Status.EXPIRED){
-				System.out.println("NOTICE: Found expired task: " + task.getTitle() +".\nRemoving...");
+				System.out.println("USER_WARNING: Found expired task: " + task.getTitle() +".\nRemoving....");
 				removeTask(task.getTitle());
-				
 			}
 		}
 	}
