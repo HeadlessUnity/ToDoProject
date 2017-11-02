@@ -1,6 +1,7 @@
 package toDoProject;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
 
 
@@ -18,8 +19,10 @@ public class ToDoList {
 	}
 	
 	public void checkExpDates() {
-		for (Task task : list) {
-			if (task.getEndDate().isAfter(task.getStartDate())){
+		Iterator<Task> it = list.iterator(); 
+		while (it.hasNext()) {
+			Task task = it.next();
+			if (task.getEndDate().isBefore(task.getStartDate())){
 				System.out.println("USER_NOTICE: Found expired task: " + task.getTitle() +"\nChanging task: " + task.getTitle() + " to EXPIRED.");
 				task.setStatus(Status.EXPIRED);
 				
@@ -28,11 +31,13 @@ public class ToDoList {
 	}
 
 
-	public void removeExpDates() {
-		for (Task task : list) {
-			if (task.getStatus() == Status.EXPIRED){
+	public void removeInactiveDates() {
+		Iterator<Task> it = list.iterator(); 
+		while (it.hasNext()) {
+			Task task = it.next();
+			if (task.getStatus() == Status.EXPIRED || task.getStatus() == Status.DONE){
 				System.out.println("USER_WARNING: Found expired task: " + task.getTitle() +".\nRemoving....");
-				removeTask(task.getTitle());
+				it.remove();
 			}
 		}
 	}
