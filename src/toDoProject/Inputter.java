@@ -30,6 +30,7 @@ public class Inputter {
 		while (running) {
 			// Asks the user what it want to do
 			System.out.println("What would you like \"To Do\"?");
+			todo.removeExpDates();
 			Scanner sc = new Scanner(System.in);
 			String input = sc.nextLine().toLowerCase();
 			

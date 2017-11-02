@@ -23,6 +23,15 @@ public class ToDoList {
 //
 //	}
 //TODO
+	public void removeExpDates() {
+		for (Task task : list) {
+			if (task.getStatus() == Status.EXPIRED){
+				System.out.println("NOTICE: Found expired task: " + task.getTitle() +".\nRemoving...");
+				
+				
+			}
+		}
+	}
 	public void editTask(String name) {
 
 		findTask(name);
