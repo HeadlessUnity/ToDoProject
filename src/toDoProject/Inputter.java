@@ -56,6 +56,8 @@ public class Inputter {
 					
 				case "remove":
 					System.out.println("Choose task to remove");
+					toDoTitle = sc.nextLine();
+					todo.removeTask(toDoTitle);
 					System.out.println("Removing task");
 				break;
 					
@@ -71,7 +73,7 @@ public class Inputter {
 					System.out.println("Type the title of Task");
 					toDoTitle = sc.nextLine();
 					System.out.println(todo.findTask(toDoTitle));
-					System.out.println("Is this the task you were looking for?\n");
+					System.out.println("Congratulations! you found the task!\n");
 				break;
 					
 				case "edit":
@@ -108,6 +110,7 @@ public class Inputter {
 				" +--------------------------------------+\n" + 
 				" |\t Command | Function\t\t|\n" +
 				" +--------------------------------------+\n" + 
+				" |\t-add\t   Add task\t\t|\n" +
 				" |\t-remove\t   Remove task\t\t|\n" +
 				" |\t-list\t   List all tasks\t|\n" +
 				" |\t-find\t   Find tasks\t\t|\n" +
