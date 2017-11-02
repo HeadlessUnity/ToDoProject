@@ -17,6 +17,7 @@ public class ToDoList {
 	}
 	
 	public void removeTask(String title) {
+		System.out.println(list.indexOf(findTask(title)));
 		list.remove(findTask(title));
 		
 		

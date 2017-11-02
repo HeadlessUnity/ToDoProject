@@ -31,7 +31,7 @@ public class Inputter {
 			// Asks the user what it want to do
 			System.out.println("What would you like \"To Do\"?");
 			Scanner sc = new Scanner(System.in);
-			String input = sc.nextLine().toLowerCase();
+			String input = sc.nextLine().toLowerCase().trim();
 			
 			switch (input) {
 			
