@@ -33,7 +33,7 @@ public class Inputter {
 			System.out.println("Checking toDoList integrity...");
 			todo.checkExpDates();
 			// Removes expired task(s) from toDoList. 
-			todo.removeExpDates();
+			todo.removeInactiveDates();
 			// Asks the user what it want to do
 			System.out.println("What would you like \"To Do\"?");
 			Scanner sc = new Scanner(System.in);
