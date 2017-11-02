@@ -8,6 +8,7 @@ import java.util.Scanner;
 public class ToDoList {
 	Scanner sc = new Scanner(System.in);
 	String input; 
+	int inputInt;
 
 	private ArrayList<Task> list = new ArrayList<Task>();
 
@@ -23,36 +24,37 @@ public class ToDoList {
 //
 //	}
 //TODO
-	public void editTask(String name) {
-
-		findTask(name);
-		System.out.println("Found taskname: " + name.toString());
-		System.out.println("What do you want to change? (name,description,endDate");
+	public void editTask() {
+		System.out.println("Enter task to edit ");
+		String searchString = sc.nextLine().toLowerCase();
+		Task foundTask = this.findTask(searchString);
+		System.out.println("Found taskname: " + searchString.toString());
+		System.out.println("What do you want to change? (name,description,date)");
 		input = sc.nextLine().toLowerCase();
 		switch (input) {
 		case "name":
-			
-			input = sc.nextLine().toLowerCase();
+			System.out.println("Enter new Name:");
+			input = sc.nextLine();
+			foundTask.setTitle(input);			
 			
 			break;
 
 		case "description":
-			
-			input = sc.nextLine().toLowerCase();
-
+			System.out.println("Enter new description:");
+			input = sc.nextLine();
+			foundTask.setDescription(input);
 			break;
 			
-		case "endDate":
-			
-			input = sc.nextLine().toLowerCase();
-
+		case "date":
+			System.out.println("Enter number of days to set new enddate:");
+			inputInt = sc.nextInt();
+			foundTask.setEndDate(foundTask.getEndDate().plusDays(inputInt));
 			break;
 
 		default:
 			break;
 		}
-		input = sc.nextLine().toLowerCase();
-
+		
 
 	}
 	public void printAll() {
@@ -65,7 +67,7 @@ public class ToDoList {
 
 
 
-	public String findTask(String title){
+	public Task findTask(String title){
 
 		title =title.trim();
 		
@@ -73,7 +75,7 @@ public class ToDoList {
 			
 			if (task.getTitle().equals(title)) {
 				//System.out.println(task.toString());
-				return task.toString();
+				return task;
 			}
 
 			

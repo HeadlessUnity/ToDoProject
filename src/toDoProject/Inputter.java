@@ -74,6 +74,7 @@ public class Inputter {
 				break;
 					
 				case "edit":
+					todo.editTask();
 					System.out.println("Editing the task");
 				break;
 					
