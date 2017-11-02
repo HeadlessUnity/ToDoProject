@@ -13,16 +13,16 @@ public class ToDoList {
 
 
 	public void addTask(Task task) {
-
 		list.add(task);
 	}
 	
-// TODO fix this mother...
-//	public void removeTask(String title) {
-//		findTask(name)
-//
-//	}
-//TODO
+	public void removeTask(String title) {
+		list.remove(findTask(title));
+		
+		
+
+	}
+
 	public void editTask(String name) {
 
 		findTask(name);
@@ -65,15 +65,14 @@ public class ToDoList {
 
 
 
-	public String findTask(String title){
+	public Task findTask(String title){
 
 		title =title.trim();
 		
 		for (Task task : list) {
 			
-			if (task.getTitle().equals(title)) {
-				//System.out.println(task.toString());
-				return task.toString();
+			if (task.getTitle().equalsIgnoreCase(title)) {
+				return task;
 			}
 
 			
