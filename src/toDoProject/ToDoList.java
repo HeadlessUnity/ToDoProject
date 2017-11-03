@@ -1,6 +1,7 @@
 package toDoProject;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class ToDoList {
@@ -15,28 +16,37 @@ public class ToDoList {
 		list.add(task);
 	}
 	
+
 	public void checkStatus() {
-		//checks task status
-		for (Task task : list) {
-			if (task.getEndDate().isAfter(task.getStartDate())){
+		//checks task status		
+		Iterator<Task> it = list.iterator(); 
+		while (it.hasNext()) {
+			Task task = it.next();
+			if (task.getEndDate().isBefore(task.getStartDate())){
+
 				System.out.println("USER_NOTICE: Found expired task: " + task.getTitle() +"\nChanging task: " + task.getTitle() + " to EXPIRED.");
 				task.setStatus(Status.EXPIRED);				
 			}
 		}
 	}
 
+
 	public void removeExpDates() {
 		//checks if a task has past its expiry date and if so removes it from todolist
-		for (Task task : list) {
-			if (task.getStatus() == Status.EXPIRED){
+				Iterator<Task> it = list.iterator(); 
+		while (it.hasNext()) {
+			Task task = it.next();
+			if (task.getStatus() == Status.EXPIRED || task.getStatus() == Status.DONE){
+
 				System.out.println("USER_WARNING: Found expired task: " + task.getTitle() +".\nRemoving....");
-				removeTask(task.getTitle());
+				it.remove();
 			}
 		}
 	}
 
 	public void removeTask(String title) {
 		//deletes a task from todolist
+		System.out.println(list.indexOf(findTask(title)));
 		list.remove(findTask(title));
 	}
 

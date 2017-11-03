@@ -33,11 +33,11 @@ public class Inputter {
 			System.out.println("Checking toDoList integrity...");
 			todo.checkStatus();
 			// Removes expired task(s) from toDoList. 
-			todo.removeExpDates();
+			todo.removeInactiveDates();
 			// Asks the user what it want to do
 			System.out.println("What would you like \"To Do\"?");
 			Scanner sc = new Scanner(System.in);
-			String input = sc.nextLine().toLowerCase();
+			String input = sc.nextLine().toLowerCase().trim();
 			
 			switch (input) {
 			
@@ -63,7 +63,7 @@ public class Inputter {
 					System.out.println("Choose task to remove");
 					toDoTitle = sc.nextLine();
 					todo.removeTask(toDoTitle);
-					System.out.println("Removing task");
+					System.out.println("Removing task\n");
 				break;
 					
 				case "list":
@@ -83,7 +83,7 @@ public class Inputter {
 					
 				case "edit":
 					todo.editTask();
-					System.out.println("Editing the task");
+					System.out.println("Editing the task\n");
 				break;
 					
 				case "help":
