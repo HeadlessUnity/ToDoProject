@@ -30,7 +30,14 @@ public class Inputter {
 		while (running) {
 			
 			
-			System.out.println("Checking toDoList integrity...");
+			try {
+				System.out.println("Checking toDoList integrity...\n");
+				Thread.sleep(2000);
+			} 
+			catch (Exception e) {
+				e.printStackTrace();
+			}
+			
 			todo.checkExpDates();
 			// Removes expired task(s) from toDoList. 
 			todo.removeInactiveDates();
@@ -55,20 +62,33 @@ public class Inputter {
 					// Create the task with all the previously added information
 					Task task = new Task(toDoTitle, toDoDescription, endDate);
 					// Adding the task to the List
-					todo.addTask(task);
-					System.out.println("To Do added!\n");
+					try {
+						todo.addTask(task);
+						Thread.sleep(1000);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					System.out.println("Task added!\n");
+					System.out.println("-----------------------------\n");
 				break;
 					
 				case "remove":
 					System.out.println("Choose task to remove");
 					toDoTitle = sc.nextLine();
 					todo.removeTask(toDoTitle);
-					System.out.println("Removing task\n");
+					try {
+						System.out.println("Removing task...");
+						Thread.sleep(1000);
+					} catch (Exception e1) {
+						e1.printStackTrace();
+					}
+					System.out.println("Task successfully removed!\n");
+					System.out.println("-----------------------------\n");
 				break;
 					
 				case "list":
 					// Here we list all Tasks in the list
-					System.out.println(" -- Listing all tasks -- ");
+					System.out.println(" -- Listing all tasks -- \n");
 					todo.printAll();
 					System.out.println("-----------------------------\n");
 				break;
@@ -77,14 +97,62 @@ public class Inputter {
 					// Here we call the scanner to ask for a title to find.
 					System.out.println("Type the title of Task");
 					toDoTitle = sc.nextLine();
-					System.out.println(todo.findTask(toDoTitle));
-					System.out.println("Congratulations! you found the task!\n");
+					try {
+						System.out.println("Searching...\n");
+						Thread.sleep(2000);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					if (todo.findTask(toDoTitle) != null)
+						System.out.println("Found the task!\n" + todo.findTask(toDoTitle));
+					else
+						System.out.println(" -- Task not found! --");
+					System.out.println("-----------------------------\n");
 				break;
 					
 				case "edit":
-					todo.editTask();
-					System.out.println("Editing the task\n");
-				break;
+					System.out.println("Enter task to edit ");
+					try {
+						toDoTitle = sc.nextLine();
+						task = todo.findTask(toDoTitle);
+						System.out.println("Found taskname: " + task.getTitle());
+						System.out.println("What do you want to change? (name,description,date)");
+						String choice = sc.nextLine();
+						switch (choice) {
+							case "name":
+								System.out.println("Enter new Name:");
+								toDoTitle = sc.nextLine();
+								todo.inputString(toDoTitle);
+								todo.editTask(task, choice);
+							break;
+							
+							case "description":
+								System.out.println("Enter new description:");
+								toDoDescription = sc.nextLine();
+								todo.inputString(toDoDescription);
+								todo.editTask(task, choice);
+							break;
+							
+							case "date":
+								System.out.println("Enter number of days to set new enddate:");
+								endDate = sc.nextInt();
+								todo.inputInt(endDate);
+								todo.editTask(task, choice);
+							break;
+	
+						default:
+							System.out.println("Invalid command");
+							break;
+						}
+						
+						System.out.println("Task changed!");
+						System.out.println("-----------------------------\n");
+					break;
+					} catch (Exception e) {
+						System.out.println(" -- Task not found --\n");
+	//					e.printStackTrace();
+						break;
+					}
 					
 				case "help":
 					// This is just some help if the user don't know what to type
@@ -93,7 +161,7 @@ public class Inputter {
 					
 				case "exit":
 					// This just exits the program
-					System.out.println("Exiting program");
+					System.out.println("-- Exiting program --");
 					sc.close();
 					running = false;
 				break;
