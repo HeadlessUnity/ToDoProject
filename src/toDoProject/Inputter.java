@@ -28,9 +28,6 @@ public class Inputter {
 		
 		
 		while (running) {
-			
-			
-<<<<<<< HEAD
 			try {
 				System.out.println("Checking toDoList integrity...\n");
 				Thread.sleep(2000);
@@ -38,19 +35,13 @@ public class Inputter {
 			catch (Exception e) {
 				e.printStackTrace();
 			}
-			
-			todo.checkExpDates();
-=======
-			System.out.println("Checking toDoList integrity...");
 			todo.checkStatus();
->>>>>>> 1a4af59c821ce49bc97dee6fbb88c727ff04f378
 			// Removes expired task(s) from toDoList. 
-			todo.removeInactiveDates();
+			todo.removeExpDates();
 			// Asks the user what it want to do
 			System.out.println("What would you like \"To Do\"?");
 			Scanner sc = new Scanner(System.in);
 			String input = sc.nextLine().toLowerCase().trim();
-			
 			switch (input) {
 			
 				case "add":
@@ -81,13 +72,6 @@ public class Inputter {
 					System.out.println("Choose task to remove");
 					toDoTitle = sc.nextLine();
 					todo.removeTask(toDoTitle);
-					try {
-						System.out.println("Removing task...");
-						Thread.sleep(1000);
-					} catch (Exception e1) {
-						e1.printStackTrace();
-					}
-					System.out.println("Task successfully removed!\n");
 					System.out.println("-----------------------------\n");
 				break;
 					
@@ -111,7 +95,7 @@ public class Inputter {
 					if (todo.findTask(toDoTitle) != null)
 						System.out.println("Found the task!\n" + todo.findTask(toDoTitle));
 					else
-						System.out.println(" -- Task not found! --");
+						System.out.println(" -- Task not found! --\n" + "Returning to start...");
 					System.out.println("-----------------------------\n");
 				break;
 					
@@ -120,7 +104,13 @@ public class Inputter {
 					try {
 						toDoTitle = sc.nextLine();
 						task = todo.findTask(toDoTitle);
-						System.out.println("Found taskname: " + task.getTitle());
+						try {
+							System.out.println("Searching...\n");
+							Thread.sleep(2000);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+						System.out.println("Found task: " + task.getTitle() + "\n");
 						System.out.println("What do you want to change? (name,description,date)");
 						String choice = sc.nextLine();
 						switch (choice) {
@@ -151,13 +141,13 @@ public class Inputter {
 						}
 						
 						System.out.println("Task changed!");
-						System.out.println("-----------------------------\n");
-					break;
 					} catch (Exception e) {
-						System.out.println(" -- Task not found --\n");
-	//					e.printStackTrace();
+						System.out.println(" -- Task not found! --\n" + "Returning to start...");
+//						e.printStackTrace();
 						break;
 					}
+					System.out.println("-----------------------------\n");
+					break;
 					
 				case "help":
 					// This is just some help if the user don't know what to type
@@ -172,6 +162,7 @@ public class Inputter {
 				break;
 		
 				default:
+					System.out.println(" -- Invalid command, type \"help\" for command list --\n");
 				break;
 			}
 		}
