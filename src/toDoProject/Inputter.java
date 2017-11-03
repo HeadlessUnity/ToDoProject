@@ -30,6 +30,7 @@ public class Inputter {
 		while (running) {
 			
 			
+<<<<<<< HEAD
 			try {
 				System.out.println("Checking toDoList integrity...\n");
 				Thread.sleep(2000);
@@ -39,6 +40,10 @@ public class Inputter {
 			}
 			
 			todo.checkExpDates();
+=======
+			System.out.println("Checking toDoList integrity...");
+			todo.checkStatus();
+>>>>>>> 1a4af59c821ce49bc97dee6fbb88c727ff04f378
 			// Removes expired task(s) from toDoList. 
 			todo.removeInactiveDates();
 			// Asks the user what it want to do
