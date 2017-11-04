@@ -1,5 +1,6 @@
 package toDoProject;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Inputter {
@@ -54,9 +55,16 @@ public class Inputter {
 					toDoDescription = sc.nextLine();
 					// Here we type how many days it should take
 					System.out.println("How many days should this take?");
-					endDate = sc.nextInt();
 					// Create the task with all the previously added information
-					Task task = new Task(toDoTitle, toDoDescription, endDate);
+					Task task;
+					try {
+						endDate = sc.nextInt();
+					} catch (InputMismatchException e1) {
+						System.out.println(" -- Invalid input! --\n" + "Returning to start...");
+						endDate = -100;
+//						e1.printStackTrace();
+					}
+					task = new Task(toDoTitle, toDoDescription, endDate);
 					// Adding the task to the List
 					try {
 						todo.addTask(task);
@@ -64,7 +72,6 @@ public class Inputter {
 					} catch (Exception e) {
 						e.printStackTrace();
 					}
-					System.out.println("Task added!\n");
 					System.out.println("-----------------------------\n");
 				break;
 					
@@ -95,8 +102,9 @@ public class Inputter {
 					if (todo.findTask(toDoTitle) != null)
 						System.out.println("Found the task!\n" + todo.findTask(toDoTitle));
 					else
-						System.out.println(" -- Task not found! --\n" + "Returning to start...");
-					System.out.println("-----------------------------\n");
+						System.out.println(" -- Task not found! --\n" + 
+										"Returning to start...\n" + 
+										"-----------------------------\n");
 				break;
 					
 				case "edit":
@@ -111,38 +119,49 @@ public class Inputter {
 							e.printStackTrace();
 						}
 						System.out.println("Found task: " + task.getTitle() + "\n");
-						System.out.println("What do you want to change? (name,description,date)");
-						String choice = sc.nextLine();
-						switch (choice) {
+						boolean editLoop = true;
+						while (editLoop) {
+							System.out.println("What do you want to change? (name, description, date)");
+							String choice = sc.nextLine();
+							switch (choice) {
 							case "name":
 								System.out.println("Enter new Name:");
 								toDoTitle = sc.nextLine();
 								todo.inputString(toDoTitle);
 								todo.editTask(task, choice);
-							break;
-							
+								editLoop = false;
+								break;
+
 							case "description":
 								System.out.println("Enter new description:");
 								toDoDescription = sc.nextLine();
 								todo.inputString(toDoDescription);
 								todo.editTask(task, choice);
-							break;
-							
+								editLoop = false;
+								break;
+
 							case "date":
 								System.out.println("Enter number of days to set new enddate:");
 								endDate = sc.nextInt();
 								todo.inputInt(endDate);
 								todo.editTask(task, choice);
-							break;
-	
-						default:
-							System.out.println("Invalid command");
-							break;
+								editLoop = false;
+								break;
+
+							default:
+								System.out.println("Invalid command\n");
+								break;
+							}
 						}
-						
 						System.out.println("Task changed!");
-					} catch (Exception e) {
-						System.out.println(" -- Task not found! --\n" + "Returning to start...");
+					} catch (NullPointerException e) {
+						System.out.println(" -- Task not found! --\n" + "Returning to start...\n");
+						System.out.println("-----------------------------\n");
+//						e.printStackTrace();
+						break;
+					}catch (InputMismatchException e) {
+						System.out.println(" -- Invalid input! --\n" + "Returning to start...\n");
+						System.out.println("-----------------------------\n");
 //						e.printStackTrace();
 						break;
 					}
