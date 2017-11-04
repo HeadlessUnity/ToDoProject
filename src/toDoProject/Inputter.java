@@ -58,19 +58,20 @@ public class Inputter {
 					// Create the task with all the previously added information
 					Task task;
 					try {
+						// Exception handling, if endDate is not int, catch it.
 						endDate = sc.nextInt();
+						task = new Task(toDoTitle, toDoDescription, endDate);
+						// Adding the task to the List
+						try {
+							todo.addTask(task);
+							Thread.sleep(1000);
+						} catch (Exception e) {
+							e.printStackTrace();
+						}
+						System.out.println(" -- Task Added! --\n");
 					} catch (InputMismatchException e1) {
-						System.out.println(" -- Invalid input! --\n" + "Returning to start...");
-						endDate = -100;
+						System.out.println(" -- Invalid input! --\n" + "Returning to start...\n");
 //						e1.printStackTrace();
-					}
-					task = new Task(toDoTitle, toDoDescription, endDate);
-					// Adding the task to the List
-					try {
-						todo.addTask(task);
-						Thread.sleep(1000);
-					} catch (Exception e) {
-						e.printStackTrace();
 					}
 					System.out.println("-----------------------------\n");
 				break;
@@ -154,6 +155,8 @@ public class Inputter {
 							}
 						}
 						System.out.println("Task changed!");
+						
+					// Exceptions
 					} catch (NullPointerException e) {
 						System.out.println(" -- Task not found! --\n" + "Returning to start...\n");
 						System.out.println("-----------------------------\n");

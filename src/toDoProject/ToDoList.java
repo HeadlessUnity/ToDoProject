@@ -44,7 +44,7 @@ public class ToDoList {
 
 	public void removeTask(String title) {
 		//deletes a task from todolist
-		System.out.println(list.indexOf(findTask(title)));
+		//System.out.println(list.indexOf(findTask(title)));
 		Task task = findTask(title);
 		if (task == null)
 			System.out.println(" -- Task not found! --\n" + "Returning to start...");
