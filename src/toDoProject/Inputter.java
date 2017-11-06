@@ -162,11 +162,13 @@ public class Inputter {
 						System.out.println("Task changed!");
 						
 					// Exceptions
+						// When task is not found with findTask()
 					} catch (NullPointerException e) {
 						System.out.println(" -- Task not found! --\n" + "Returning to start...\n");
 						System.out.println("-----------------------------\n");
 //						e.printStackTrace();
 						break;
+						// When input int is not an int
 					}catch (InputMismatchException e) {
 						System.out.println(" -- Invalid input! --\n" + "Returning to start...\n");
 						System.out.println("-----------------------------\n");
@@ -181,8 +183,15 @@ public class Inputter {
 					System.out.println(helpMessage());
 				break;
 				
-				case "sort":
-					todo.sortTodoByEndDateList();
+				// Calls the sort function depending on case
+				case "sortdate":
+					todo.sortTodoList(input);
+					System.out.println("-----------------------------\n");
+					break;
+					
+				case "sorttitle":
+					todo.sortTodoList(input);
+					System.out.println("-----------------------------\n");
 					break;
 					
 				case "exit":

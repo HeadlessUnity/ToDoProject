@@ -16,16 +16,29 @@ public class ToDoList {
 		list.add(task);
 	}
 
-	public void sortTodoByEndDateList() {
-		Collections.sort(list, new Comparator<Task>(){
-			public int compare(Task t1, Task t2) {
-				return t1.getEndDate().compareTo(t2.getEndDate());
-			}			
-		});
-		System.out.println(list);
+	// The sort method
+	public void sortTodoList(String input) {
+		if (input.equalsIgnoreCase("sortdate")) {
+			Collections.sort(list, new Comparator<Task>(){
+				//Compares t1 and t2
+				public int compare(Task t1, Task t2) {
+					// Chooses what to compare
+					return t1.getEndDate().compareTo(t2.getEndDate());
+				}			
+			});
+			System.out.println("Sorted list by end date\n");
+		}
+		else if (input.equalsIgnoreCase("sorttitle")) {
+			Collections.sort(list, new Comparator<Task>(){
+				public int compare(Task t1, Task t2) {
+					return t1.getTitle().compareTo(t2.getTitle());
+				}			
+			});
+			System.out.println("Sorted list by title\n");
+		}
+		else
+			System.out.println(" -- Invalid command! --\n");
 	}
-
-
 
 
 	public void checkStatus() {
@@ -75,7 +88,7 @@ public class ToDoList {
 
 
 	public void editTask(Task task, String choice) {
-		
+		// Edits task depending of choice
 		if (choice.equalsIgnoreCase("name")) {
 			task.setTitle(inputStringValue);			
 		}
