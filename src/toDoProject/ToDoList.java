@@ -1,11 +1,13 @@
 package toDoProject;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Iterator;
 import java.util.Scanner;
 
 public class ToDoList {
-	
+
 	Scanner sc = new Scanner(System.in);
 	String input; 
 	int inputInt;
@@ -15,7 +17,18 @@ public class ToDoList {
 	public void addTask(Task task) {
 		list.add(task);
 	}
-	
+
+	public void sortTodoByEndDateList() {
+		Collections.sort(list, new Comparator<Task>(){
+			public int compare(Task t1, Task t2) {
+				return t1.getEndDate().compareTo(t2.getEndDate());
+			}			
+		});
+		System.out.println(list);
+	}
+
+
+
 
 	public void checkStatus() {
 		//checks task status		
@@ -33,7 +46,7 @@ public class ToDoList {
 
 	public void removeExpDates() {
 		//checks if a task has past its expiry date and if so removes it from todolist
-				Iterator<Task> it = list.iterator(); 
+		Iterator<Task> it = list.iterator(); 
 		while (it.hasNext()) {
 			Task task = it.next();
 			if (task.getStatus() == Status.EXPIRED || task.getStatus() == Status.DONE){
@@ -62,7 +75,7 @@ public class ToDoList {
 			System.out.println("Enter new Name:");
 			input = sc.nextLine();
 			foundTask.setTitle(input);			
-			
+
 			break;
 
 		case "description":
@@ -70,7 +83,7 @@ public class ToDoList {
 			input = sc.nextLine();
 			foundTask.setDescription(input);
 			break;
-			
+
 		case "date":
 			System.out.println("Enter number of days to set new enddate:");
 			inputInt = sc.nextInt();
@@ -80,8 +93,8 @@ public class ToDoList {
 		default:
 			break;
 		}
-	 }
-	
+	}
+
 	public void printAll() {
 		//prints all tasks to screen
 		for(Task l : list)
