@@ -131,6 +131,47 @@ public class ToDoList {
 		this.inputIntValue = input;
 	}
 
+//	public void prepareTask(String title, String description, int numberOfDays) {
+//		Task task = new Task();
+//		task.setTitle(title);
+//		task.setDescription(description);
+//		task.setStartDate(LocalDate.now());
+//		task.setEndDate(task.getStartDate().plusDays(numberOfDays));
+//		task.setStatus(Status.ACTIVE);
+//		
+//		addToXml(task);
+//	}
+//	
+//	public void addToXml(Task task) {
+//		try {
+//			
+//			FileOutputStream file = new FileOutputStream("./ToDoList.xml");
+//			
+//			JAXBContext jaxbContext = JAXBContext.newInstance(Task.class);
+//			Marshaller jaxbMarshaller = jaxbContext.createMarshaller();
+//			jaxbMarshaller.marshal(task, file);
+//			
+//			jaxbMarshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+//			jaxbMarshaller.marshal(task, System.out);
+//			
+//		}catch (JAXBException e) {
+//			e.printStackTrace();
+//		}
+//	}
+//	
+//	public void xmlToObject() {
+//try {
+//			File file = new File("ToDoList.xml");
+//			
+//			JAXBContext jaxbContext = JAXBContext.newInstance(Task.class);
+//			Unmarshaller jaxbUnmarshaller = jaxbContext.createUnmarshaller();
+//			Task task = (Task) jaxbUnmarshaller.unmarshal(file);
+//			
+//			System.out.println(task);
+//		}catch (JAXBException e) {
+//			e.printStackTrace();
+//		}
+//	}
 }
 
 
